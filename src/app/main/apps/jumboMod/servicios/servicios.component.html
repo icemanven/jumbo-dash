@@ -1,0 +1,120 @@
+<div id="entidades" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg mat-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header mat-accent-bg"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0"
+                 fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    {{entidadesConst.icon}}
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    {{entidadesConst.names}}
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-input-wrapper mx-24 m-md-0"
+                 fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+                <label for="search" class="mr-8">
+                    <mat-icon class="secondary-text">Busqueda</mat-icon>
+                </label>
+                <mat-form-field floatLabel="never" fxFlex="1 0 auto">
+                    <input id="search" matInput #filter placeholder="Busqueda de {{entidadesConst.name}}">
+                </mat-form-field>
+            </div>
+            <!-- / SEARCH -->
+
+            <button mat-raised-button
+                    [routerLink]="entidadesConst.urlEntidad"
+                    class="add-entidad-button mat-white-bg my-12 mt-sm-0">
+                <span>Agregar Nuevo {{entidadesConst.name}}</span>
+            </button>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card mat-white-bg">
+
+            <mat-table class="entidades-table"
+                       #table [dataSource]="dataSource"
+                       matSort
+                       [@animateStagger]="{value:'50'}"
+                       fusePerfectScrollbar>
+
+                <!-- ID Columna -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let entidad">
+                        <p class="text-truncate">{{getIDPos(entidad._id)}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Nombre Columna -->
+                <ng-container matColumnDef="nombre">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+                    <mat-cell *matCellDef="let entidad">
+                        <p class="text-truncate">{{entidad.nombre}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Descripcion Columna -->
+                <ng-container matColumnDef="descripcion">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Descripcion</mat-header-cell>
+                    <mat-cell *matCellDef="let entidad">
+                        <p class="text-truncate">{{entidad.descripcion}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Costo Columna -->
+                <ng-container matColumnDef="costo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Costo</mat-header-cell>
+                    <mat-cell *matCellDef="let entidad" fxHide fxShow.gt-xs>
+                        <p class="price text-truncate">
+                            {{entidad.costo | currency:'USD':'symbol'}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Nombre Usuario -->
+                <ng-container matColumnDef="usuario">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</mat-header-cell>
+                    <mat-cell *matCellDef="let entidad">
+                        <p class="text-truncate">{{entidad.sistema.usuarioCreador.username}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let entidad; columns: displayedColumns;"
+                         class="entidad"
+                         matRipple
+                         [routerLink]="entidadesConst.urlEntidad+'/'+entidad._id">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator #paginator
+                           [length]="dataSource.filteredData.length"
+                           [pageIndex]="0"
+                           [pageSize]="10"
+                           [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

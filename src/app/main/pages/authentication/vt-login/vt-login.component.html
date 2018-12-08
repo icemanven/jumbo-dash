@@ -1,0 +1,65 @@
+<div id="login" class="inner-scroll" fxLayout="row" fxLayoutAlign="start">
+
+    <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
+
+        <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
+            <img [src]="logo">
+        </div>
+
+        <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
+            Bienvenidos Dashboard de Viajes Jumbo.
+        </div>
+
+        <div class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
+            Esta aplicacion les Permitira ejecutar procesos de la agencia de manera rapida y avanazada.
+            asi como manejar cotizaciones, ordenes de pedido y otras.
+        </div>
+
+    </div>
+
+    <div id="login-form-wrapper" fusePerfectScrollbar
+         [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="login-form">
+
+            <div class="logo" fxHide.gt-xs>
+                <span>F</span>
+            </div>
+
+            <div class="title">Ingresar a Viajes Jumbo</div>
+            <mat-error *ngIf="loginError !== null">
+                {{loginError | json}}
+            </mat-error>
+
+            <form name="loginForm" [formGroup]="loginForm" novalidate>
+
+                <mat-form-field>
+                    <input matInput placeholder="Usuario" formControlName="user">
+                    <mat-error *ngIf="loginForm.get('user').hasError('required')">
+                        Se require el usuario
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password" formControlName="password">
+                    <mat-error>
+                        se requiere el  Password
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
+                     fxLayoutAlign="space-between center">
+                    <mat-checkbox class="remember-me" aria-label="Remember Me">
+                        Remember Me
+                    </mat-checkbox>
+                </div> -->
+
+                <button mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
+                        [disabled]="loginForm.invalid" (click)="setLogin()">
+                    LOGIN
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>
