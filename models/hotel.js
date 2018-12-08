@@ -1,3 +1,5 @@
+const hotelTypes = require("../def/hotelTypes");
+
 const mongoose = require('mongoose');
 const { Schema, SchemaTypes} = mongoose;
 require('mongoose-type-email');
@@ -10,7 +12,7 @@ const SistemaSchema = require('./sistema');
 
 const HotelSchema = new Schema({
   nombre: { type: String, required: true, index: { unique: true }},
-  segmeto: {type: String, enum: ['Adulto', 'Familias', 'LGTB']},
+  segmeto: {type: String, enum: hotelTypes},
   habitaciones: [{type: Schema.Types.ObjectId, ref: 'Habitacion'}],
   servicios: [{type: Schema.Types.ObjectId, ref: 'Servicio'}],
   serviciosNoIncluidos: [{type: Schema.Types.ObjectId, ref: 'Servicio'}],

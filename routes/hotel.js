@@ -3,6 +3,7 @@ const router = express.Router([]);
 const mongoose = require('mongoose');
 const cors = require('cors');
 const Hotel = require('../models/hotel');
+const hotelTypes = require("../def/hotelTypes");
 
 router.options('*', cors());
 
@@ -11,6 +12,10 @@ router.get('/', cors(), (req, res, next) => {
     if (err) return next(err);
     res.json(products);
   });
+});
+
+router.get('/hoteltypes', cors(), (req, res, next) => {
+  res.json(hotelTypes);
 });
 
 router.get('/hotel/:id', cors(), (req, res, next) => {
