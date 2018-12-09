@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {
     MatButtonModule, MatCardModule,
-    MatChipsModule, MatFormFieldModule,
+    MatChipsModule, MatDatepickerModule, MatFormFieldModule,
     MatIconModule,
     MatInputModule, MatMenuModule,
     MatPaginatorModule,
@@ -36,6 +36,7 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
       MatMenuModule,
       MatToolbarModule,
       MatSidenavModule,
+      MatDatepickerModule,
   ]
 })
 export class MatCoreModule { }

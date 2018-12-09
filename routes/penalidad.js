@@ -14,14 +14,16 @@ router.get('/', cors(), (req, res, next) => {
       if (err) return next(err);
       res.json(penaliad);
     }
-  });
+  }).populate('sistema.usuarioCreador', 'username')
+      .populate('sistema.usuarioAsignado', 'username');
 });
 
 router.get('/:id', cors(), (req, res, next) =>{
   Penalidad.findById(req.params.id,  (err, post) => {
     if (err) return next(err);
     res.json(post);
-  });
+  }).populate('sistema.usuarioCreador', 'username')
+      .populate('sistema.usuarioAsignado', 'username');
 });
 
 router.post('/', cors(), (req, res, next) => {

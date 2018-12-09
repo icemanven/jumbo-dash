@@ -8,20 +8,19 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseUtils } from '@fuse/utils';
 
 import { takeUntil } from 'rxjs/internal/operators';
-import {PenalidadesService} from './penalidades.service';
-import {PenalidadConst, PenalidadModel, TypeFecha} from '../penalidad/penalidad.model';
-import {Penalidad} from '@configs/interfaces';
+import {HabitacionesService} from './habitaciones.service';
+import {HabitacionConst} from '../habitacion/habitacion.model';
 
 @Component({
-    selector   : 'jum-penalidades',
-    templateUrl: './penalidades.component.html',
-    styleUrls  : ['./penalidades.component.scss'],
+    selector   : 'jum-habitaciones',
+    templateUrl: './habitaciones.component.html',
+    styleUrls  : ['./habitaciones.component.scss'],
     animations : fuseAnimations
 })
-export class PenalidadesComponent implements OnInit
+export class HabitacionesComponent implements OnInit
 {
     dataSource: FilesDataSource | null;
-    displayedColumns = ['id', 'nombre', 'fechasini', 'fechaFin', 'cancelacionesDias', 'cargo', 'descripcion', 'usuario'];
+    displayedColumns = ['id', 'nombre', 'descripcion', 'capacidad', 'adulto', 'ninos', 'inf', 'tipoCama', 'usuario'];
 
     @ViewChild(MatPaginator)
     paginator: MatPaginator;
@@ -38,11 +37,11 @@ export class PenalidadesComponent implements OnInit
     private _unsubscribeAll: Subject<any>;
 
     constructor(
-        private _EntidadesService: PenalidadesService,
+        private _EntidadesService: HabitacionesService,
         private _matSnackBar: MatSnackBar
     )
     {
-        this.entidadesConst = PenalidadConst;
+        this.entidadesConst = HabitacionConst;
         // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
@@ -77,11 +76,6 @@ export class PenalidadesComponent implements OnInit
     getIDPos(id): number {
         return (this._EntidadesService.entidades.findIndex(e => e._id === id)) + 1;
     }
-
-    getFecha(entidad: Penalidad, type: TypeFecha): Date {
-        const entity = new PenalidadModel(entidad);
-        return entity.getfechas(type);
-    }
 }
 
 export class FilesDataSource extends DataSource<any>
@@ -92,12 +86,12 @@ export class FilesDataSource extends DataSource<any>
     /**
      * Constructor
      *
-     * @param {PenalidadesService} _EntidadesService
+     * @param {HabitacionesService} _EntidadesService
      * @param {MatPaginator} _matPaginator
      * @param {MatSort} _matSort
      */
     constructor(
-        private _EntidadesService: PenalidadesService,
+        private _EntidadesService: HabitacionesService,
         private _matPaginator: MatPaginator,
         private _matSort: MatSort
     )
@@ -209,20 +203,23 @@ export class FilesDataSource extends DataSource<any>
                 case 'nombre':
                     [propertyA, propertyB] = [a.nombre, b.nombre];
                     break;
-                case 'fechasini':
-                    [propertyA, propertyB] = [a.fechasini, b.fechasini];
-                    break;
-                case 'fechaFin':
-                    [propertyA, propertyB] = [a.fechaFin, b.fechaFin];
-                    break;
-                case 'cancelacionesDias':
-                    [propertyA, propertyB] = [a.cancelacionesDias, b.cancelacionesDias];
-                    break;
-                case 'cargo':
-                    [propertyA, propertyB] = [a.cargo, b.cargo];
-                    break;
                 case 'descripcion':
                     [propertyA, propertyB] = [a.descripcion, b.descripcion];
+                    break;
+                case 'capacidad':
+                    [propertyA, propertyB] = [a.capacidad, b.capacidad];
+                    break;
+                case 'adulto':
+                    [propertyA, propertyB] = [a.adulto, b.adulto];
+                    break;
+                case 'ninos':
+                    [propertyA, propertyB] = [a.ninos, b.ninos];
+                    break;
+                case 'inf':
+                    [propertyA, propertyB] = [a.inf, b.inf];
+                    break;
+                case 'tipoCama':
+                    [propertyA, propertyB] = [a.tipoCama, b.tipoCama];
                     break;
                 case 'usuario':
                     [propertyA, propertyB] = [a.usuario, b.usuario];

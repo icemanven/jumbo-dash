@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {
-    MatButtonModule, MatCard, MatCheckbox, MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule,
-    MatPaginatorModule, MatRippleModule, MatSelectModule, MatSnackBarModule, MatSortModule,
-    MatTableModule, MatTabsModule
-} from '@angular/material';
+
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AgmCoreModule } from '@agm/core';
 
@@ -20,13 +16,17 @@ import {EcommerceProductComponent} from './product/product.component';
 import {EcommerceProductsComponent} from './products/products.component';
 import {PenalidadComponent} from './penalidad/penalidad.component';
 import {PenalidadService} from './penalidad/penalidad.service';
-import { PanalidadFechasComponent } from './penalidad/panalidad-fechas/panalidad-fechas.component';
 import {DocsComponent} from './docs/docs.component';
 import {DocslistService} from './docslist/docslist.service';
 import {DocsService} from './docs/docs.service';
 import {DocslistComponent} from './docslist/docslist.component';
 import {CoreModule} from '@core/core.module';
 import {PenalidadesComponent} from './penalidades/penalidades.component';
+import {HabitacionesComponent} from './habitaciones/habitaciones.component';
+import {HabitacionesService} from './habitaciones/habitaciones.service';
+import {HabitacionComponent} from './habitacion/habitacion.component';
+import {HabitacionService} from './habitacion/habitacion.service';
+import {PenalidadesService} from './penalidades/penalidades.service';
 
 
 const routes: Routes = [
@@ -52,13 +52,36 @@ const routes: Routes = [
             data: ServicioService
         }
     },
-    /*{
-        path     : 'penalidades',
-        component: PenalidadesComponen,
+
+
+    {
+        path     : 'habitaciones',
+        component: HabitacionesComponent,
         resolve  : {
-            data: ServiciosService
+            data: HabitacionesService
         }
-    },*/
+    },
+    {
+        path     : 'habitacion',
+        component: HabitacionComponent,
+        resolve  : {
+            data: HabitacionService
+        }
+    },
+    {
+        path     : 'habitacion/:id',
+        component: HabitacionComponent,
+        resolve  : {
+            data: HabitacionService
+        }
+    },
+    {
+        path     : 'penalidades',
+        component: PenalidadesComponent,
+        resolve  : {
+            data: PenalidadesService
+        }
+    },
     {
         path     : 'penalidad',
         component: PenalidadComponent,
@@ -100,15 +123,16 @@ const routes: Routes = [
     declarations: [
         ServicioComponent,
         ServiciosComponent,
+        HabitacionComponent,
+        HabitacionesComponent,
         PenalidadComponent,
+        PenalidadesComponent,
         EcommerceOrderComponent,
         EcommerceOrdersComponent,
         EcommerceProductComponent,
         EcommerceProductsComponent,
-        PanalidadFechasComponent,
         DocsComponent,
         DocslistComponent,
-        PenalidadesComponent,
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -124,7 +148,10 @@ const routes: Routes = [
     providers   : [
         ServicioService,
         ServiciosService,
+        HabitacionService,
+        HabitacionesService,
         PenalidadService,
+        PenalidadesService,
         DocsService,
         DocslistService
     ]

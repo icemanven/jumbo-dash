@@ -1,30 +1,30 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Location } from '@angular/common';
 import {MatSnackBar} from '@angular/material';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
+import {HabitacionConst, HabitacionModel} from './habitacion.model';
+import {HabitacionService} from './habitacion.service';
 import {Router} from '@angular/router';
-import {PenalidadConst, PenalidadModel} from './penalidad.model';
-import {PenalidadService} from './penalidad.service';
 import {Utilities} from '@utilities/utilities';
 
+
 @Component({
-    selector     : 'jum-penalidad',
-    templateUrl  : './penalidad.component.html',
-    styleUrls    : ['./penalidad.component.scss'],
+    selector     : 'jum-habitacion',
+    templateUrl  : './habitacion.component.html',
+    styleUrls    : ['./habitacion.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class PenalidadComponent implements OnInit, OnDestroy
+export class HabitacionComponent implements OnInit, OnDestroy
 {
-    entidad: PenalidadModel;
+    entidad: HabitacionModel;
     pageType: string;
     entidadForm: FormGroup;
     entidadConst: any;
-    fechas: FormArray;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -39,16 +39,16 @@ export class PenalidadComponent implements OnInit, OnDestroy
      * @param router
      */
     constructor(
-        private entidadService: PenalidadService,
+        private entidadService: HabitacionService,
         private _formBuilder: FormBuilder,
         private _location: Location,
         private _matSnackBar: MatSnackBar,
         private router: Router
     )
     {
-        this.entidadConst = PenalidadConst;
+        this.entidadConst = HabitacionConst;
         // Set the default
-        this.entidad = new PenalidadModel();
+        this.entidad = new HabitacionModel();
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
@@ -69,16 +69,16 @@ export class PenalidadComponent implements OnInit, OnDestroy
             .subscribe(entidad => {
                 if ( entidad )
                 {
-                    this.entidad = new PenalidadModel(entidad);
+                    this.entidad = new HabitacionModel(entidad);
                     this.pageType = 'edit';
                 }
                 else
                 {
                     this.pageType = 'new';
-                    this.entidad = new PenalidadModel();
+                    this.entidad = new HabitacionModel();
                 }
 
-                this.createEntidadForm();
+                this.entidadForm = this.createEntidadForm();
             });
     }
 
@@ -101,47 +101,19 @@ export class PenalidadComponent implements OnInit, OnDestroy
      *
      * @returns {FormGroup}
      */
-    createEntidadForm(): void
+    createEntidadForm(): FormGroup
     {
-        this.entidadForm = this._formBuilder.group({
-            _id                 : [this.entidad._id],
-            nombre              : [this.entidad.nombre, Validators.required],
-            fechas              : this._formBuilder.array([]),
-            cancelacionesDias   : [this.entidad.cancelacionesDias],
-            cargo               : [this.entidad.cargo],
-            descripcion         : [this.entidad.descripcion],
-            sistema             : [this.entidad.sistema]
-        });
-        this.fechas = this.entidadForm.get('fechas') as FormArray;
-        this.iniFechas();
-    }
-
-    private iniFechas(): void {
-        this.entidad.fechas.forEach(f => {
-            this.fechas.push(this.insertFecha(f));
-        });
-    }
-
-    private insertFecha({fechasini, fechaFin}): FormGroup {
         return this._formBuilder.group({
-            fechasini: fechasini || '',
-            fechaFin: fechaFin || '',
+            _id             : [this.entidad._id],
+            nombre          : [this.entidad.nombre, Validators.required],
+            descripcion     : [this.entidad.descripcion],
+            capacidad       : [this.entidad.capacidad],
+            adulto          : [this.entidad.adulto],
+            ninos           : [this.entidad.ninos],
+            inf             : [this.entidad.inf],
+            tipoCama        : [this.entidad.tipoCama],
+            sistema         : [this.entidad.sistema],
         });
-    }
-
-    private createFecha(): FormGroup {
-        return this._formBuilder.group({
-            fechasini: '',
-            fechaFin: '',
-        });
-    }
-
-    addFecha(): void {
-        this.fechas.push(this.createFecha());
-    }
-
-    removeFecha (index): void {
-        this.fechas.removeAt(index);
     }
 
     /**

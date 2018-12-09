@@ -4,12 +4,13 @@ export type TypeFecha = 'ini' | 'fin';
 
 export class PenalidadModel
 {
-    _id: number;
-    fechas?: FechasPenalidad[];
+    _id: string;
+    nombre: string;
+    fechas: FechasPenalidad[];
     cancelacionesDias: number;
     cargo: string;
     descripcion: string;
-    sistema?: Sistema;
+    sistema: Sistema;
 
     /**
      * Constructor
@@ -20,11 +21,12 @@ export class PenalidadModel
     {
         entidad = entidad || {};
         this._id = entidad._id || null;
+        this.nombre = entidad.nombre || '';
         this.fechas = entidad.fechas || [];
         this.cancelacionesDias = entidad.cancelacionesDias || '';
         this.cargo = entidad.cargo || '';
-        this.descripcion = entidad.descripcion || ''; /*
-        this.sistema = servicio.sistema || {};*/
+        this.descripcion = entidad.descripcion || '';
+        this.sistema = entidad.sistema || {};
     }
 
     getfechas(type: TypeFecha): Date {

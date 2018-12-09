@@ -54,21 +54,10 @@
             flex: 0 1 10%;
         }
 
-        .mat-column-fechasini {
+        .mat-column-nombre, .mat-column-tipoCama {
             flex: 0 1 20%;
         }
 
-        .mat-column-fechaFin {
-            flex: 0 1 20%;
-        }
-
-        .mat-column-cancelacionesDias {
-            flex: 0 1 10%;
-        }
-
-        .mat-column-cargo, .mat-column-nombre {
-            flex: 0 1 20%;
-        }
 
         .mat-column-descripcion {
             flex: 0 1 50%;
@@ -88,7 +77,7 @@
             }
         }
 
-        .mat-column-costo {
+        .mat-column-capacidad, .mat-column-adulto, .mat-column-ninos, .mat-column-inf {
             flex: 0 1 20%;
         }
 

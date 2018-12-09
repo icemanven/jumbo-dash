@@ -62,58 +62,68 @@
                     </mat-cell>
                 </ng-container>
 
-                <!-- nombre cargo -->
+                <!-- Nombre Columna -->
                 <ng-container matColumnDef="nombre">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
-                    <mat-cell *matCellDef="let entidad" fxHide fxShow.gt-xs>
-                        <p class="price text-truncate">
-                            {{entidad.nombre}}
-                        </p>
-                    </mat-cell>
-                </ng-container>
-
-                <!-- Nombre fechasini -->
-                <ng-container matColumnDef="fechasini">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Inicial</mat-header-cell>
                     <mat-cell *matCellDef="let entidad">
-                        <p class="text-truncate">{{getFecha(entidad, 'ini') | date: 'dd/mm/yyy'}}</p>
+                        <p class="text-truncate">{{entidad.nombre}}</p>
                     </mat-cell>
                 </ng-container>
 
-                <!-- Descripcion fechaFin -->
-                <ng-container matColumnDef="fechaFin">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Final</mat-header-cell>
-                    <mat-cell *matCellDef="let entidad">
-                        <p class="text-truncate">{{getFecha(entidad, 'fin') | date: 'dd/mm/yyy'}}</p>
-                    </mat-cell>
-                </ng-container>
-
-                <!-- Costo cancelacionesDias -->
-                <ng-container matColumnDef="cancelacionesDias">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Cancelaciones (Dias)</mat-header-cell>
-                    <mat-cell *matCellDef="let entidad" fxHide fxShow.gt-xs>
-                        <p class="price text-truncate">
-                            {{entidad.cancelacionesDias}}
-                        </p>
-                    </mat-cell>
-                </ng-container>
-
-                <!-- Costo cargo -->
-                <ng-container matColumnDef="cargo">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Cargo</mat-header-cell>
-                    <mat-cell *matCellDef="let entidad" fxHide fxShow.gt-xs>
-                        <p class="price text-truncate">
-                            {{entidad.cargo}}
-                        </p>
-                    </mat-cell>
-                </ng-container>
-
-                <!-- Costo descripcion -->
+                <!-- Descripcion Columna -->
                 <ng-container matColumnDef="descripcion">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Descripcion</mat-header-cell>
+                    <mat-cell *matCellDef="let entidad">
+                        <p class="text-truncate">{{entidad.descripcion}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- capacidad Columna -->
+                <ng-container matColumnDef="capacidad">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Capacidad</mat-header-cell>
                     <mat-cell *matCellDef="let entidad" fxHide fxShow.gt-xs>
                         <p class="price text-truncate">
-                            {{entidad.descripcion}}
+                            {{entidad.capacidad}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- adulto Columna -->
+                <ng-container matColumnDef="adulto">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Adultos</mat-header-cell>
+                    <mat-cell *matCellDef="let entidad" fxHide fxShow.gt-xs>
+                        <p class="price text-truncate">
+                            {{entidad.adulto}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- ninos Columna -->
+                <ng-container matColumnDef="ninos">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Ninos</mat-header-cell>
+                    <mat-cell *matCellDef="let entidad" fxHide fxShow.gt-xs>
+                        <p class="price text-truncate">
+                            {{entidad.ninos}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- inf Columna -->
+                <ng-container matColumnDef="inf">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Infantes</mat-header-cell>
+                    <mat-cell *matCellDef="let entidad" fxHide fxShow.gt-xs>
+                        <p class="price text-truncate">
+                            {{entidad.inf}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- tipoCama Columna -->
+                <ng-container matColumnDef="tipoCama">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Cama</mat-header-cell>
+                    <mat-cell *matCellDef="let entidad" fxHide fxShow.gt-xs>
+                        <p class="price text-truncate">
+                            {{entidad.tipoCama}}
                         </p>
                     </mat-cell>
                 </ng-container>

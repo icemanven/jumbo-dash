@@ -10,14 +10,16 @@ router.get('/', cors(), (req, res, next) => {
   Habitacion.find( (err, products) => {
     if (err) return next(err);
     res.json(products);
-  });
+  }).populate('sistema.usuarioCreador', 'username')
+      .populate('sistema.usuarioAsignado', 'username');
 });
 
 router.get('/:id', cors(), (req, res, next) =>{
   Habitacion.findById(req.params.id,  (err, post) => {
     if (err) return next(err);
     res.json(post);
-  });
+  }).populate('sistema.usuarioCreador', 'username')
+      .populate('sistema.usuarioAsignado', 'username');
 });
 
 router.post('/', cors(), (req, res, next) => {

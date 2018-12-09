@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {Servicio} from '@configs/interfaces';
+import {Habitacion} from '@configs/interfaces';
 import {BackEndConst} from '@configs/constantes';
 
 @Injectable()
-export class ServicioService implements Resolve<any>
+export class HabitacionService implements Resolve<any>
 {
     routeParams: any;
-    entidad: Servicio;
+    entidad: Habitacion;
     onEntidadChanged: BehaviorSubject<any>;
-    url = `${BackEndConst.backEndUrl}${BackEndConst.endPoints.servicios}`;
+    url = `${BackEndConst.backEndUrl}${BackEndConst.endPoints.habitaciones}`;
 
     /**
      * Constructor
@@ -84,7 +84,7 @@ export class ServicioService implements Resolve<any>
     saveEntidad(entidad: any): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this._httpClient.put(`${this.url}/${entidad._id}`, entidad)
+            this._httpClient.put<any>(`${this.url}/${entidad._id}`, entidad)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
@@ -103,7 +103,7 @@ export class ServicioService implements Resolve<any>
             delete entidad._id;
         }
         return new Promise((resolve, reject) => {
-            this._httpClient.post(`${this.url}`, entidad)
+            this._httpClient.post<any>(`${this.url}`, entidad)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
@@ -118,7 +118,7 @@ export class ServicioService implements Resolve<any>
     removeEntidad(entidad: any): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this._httpClient.delete(`${this.url}/${entidad._id}`)
+            this._httpClient.delete<any>(`${this.url}/${entidad._id}`)
                 .subscribe((response: any) => {
                     this.entidad = response;
                     this.onEntidadChanged.next(this.entidad);

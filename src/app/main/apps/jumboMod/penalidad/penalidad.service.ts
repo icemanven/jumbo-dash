@@ -5,14 +5,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import {Penalidad} from '@configs/interfaces';
 import {BackEndConst} from '@configs/constantes';
 
-type Entidad = Penalidad;
-
-
 @Injectable()
 export class PenalidadService implements Resolve<any>
 {
     routeParams: any;
-    entidad: Entidad;
+    entidad: Penalidad;
     onEntidadChanged: BehaviorSubject<any>;
     url = `${BackEndConst.backEndUrl}${BackEndConst.endPoints.penalidades}`;
 
@@ -58,7 +55,7 @@ export class PenalidadService implements Resolve<any>
      *
      * @returns {Promise<any>}
      */
-    getEntidad(): Promise<boolean | Entidad>
+    getEntidad(): Promise<boolean | any>
     {
         return new Promise((resolve, reject) => {
             if ( !this.routeParams.id ) // === 'new'
@@ -68,7 +65,7 @@ export class PenalidadService implements Resolve<any>
             }
             else
             {
-                this._httpClient.get<Entidad>(`${this.url}/${this.routeParams.id}`)
+                this._httpClient.get<any>(`${this.url}/${this.routeParams.id}`)
                     .subscribe((response: any) => {
                         this.entidad = response;
                         this.onEntidadChanged.next(this.entidad);
@@ -84,10 +81,10 @@ export class PenalidadService implements Resolve<any>
      * @param entidad
      * @returns {Promise<any>}
      */
-    saveEntidad(entidad: Entidad): Promise<Entidad>
+    saveEntidad(entidad: any): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this._httpClient.put<Entidad>(`${this.url}/${entidad._id}`, entidad)
+            this._httpClient.put<any>(`${this.url}/${entidad._id}`, entidad)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
@@ -100,13 +97,13 @@ export class PenalidadService implements Resolve<any>
      * @param entidad
      * @returns {Promise<any>}
      */
-    addEntidad(entidad: Entidad): Promise<Entidad>
+    addEntidad(entidad: any): Promise<any>
     {
         if (entidad._id === null) {
             delete entidad._id;
         }
         return new Promise((resolve, reject) => {
-            this._httpClient.post<Entidad>(`${this.url}`, entidad)
+            this._httpClient.post<any>(`${this.url}`, entidad)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
@@ -118,10 +115,10 @@ export class PenalidadService implements Resolve<any>
      *
      * @returns {Promise<any>}
      */
-    removeEntidad(entidad: Entidad): Promise<Entidad>
+    removeEntidad(entidad: any): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this._httpClient.delete<Entidad>(`${this.url}/${entidad._id}`)
+            this._httpClient.delete<any>(`${this.url}/${entidad._id}`)
                 .subscribe((response: any) => {
                     this.entidad = response;
                     this.onEntidadChanged.next(this.entidad);

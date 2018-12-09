@@ -10,6 +10,7 @@ export class ServiciosService implements Resolve<any>
 {
     entidades: Servicio[];
     onEntidadesChanged: BehaviorSubject<any>;
+    url = `${BackEndConst.backEndUrl}${BackEndConst.endPoints.servicios}`;
 
     /**
      * Constructor
@@ -53,8 +54,8 @@ export class ServiciosService implements Resolve<any>
      */
     getEntidades(): Promise<any> {
         return new Promise((resolve, reject) => {
-            this._httpClient.get(`${BackEndConst.backEndUrl}${BackEndConst.endPoints.servicios}`)
-                .subscribe((response: Servicio[]) => {
+            this._httpClient.get(this.url)
+                .subscribe((response: any[]) => {
                     this.entidades = response;
                     this.onEntidadesChanged.next(this.entidades);
                     resolve(response);

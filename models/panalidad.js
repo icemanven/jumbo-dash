@@ -3,7 +3,7 @@ const { Schema} = mongoose;
 require('mongoose-type-email');
 const SistemaSchema = require('./sistema');
 
-const FechaSchema = new Schema({
+/*const FechaSchema = new Schema({
   fechasini: {
     type: Date, require: true,
     validate: {
@@ -21,22 +21,28 @@ const FechaSchema = new Schema({
       message: props => `${props.value} Debe ser Mayo que la fecha fin!`
     }
   },
+});*/
+
+const FechaSchema = new Schema({
+    fechasini: Date,
+    fechaFin: Date
 });
 
 const PenalidadSchema = new Schema({
-  fechas: [FechaSchema],
-  cancelacionesDias: Number,
-  cargo: String,
-  descripcion: String,
-  sistema: SistemaSchema
+    nombre: { type: String, required: true},
+    fechas: [FechaSchema],
+    cancelacionesDias: Number,
+    cargo: String,
+    descripcion: String,
+    sistema: SistemaSchema
 });
 
-PenalidadSchema.pre('findOne', () =>{
+/*PenalidadSchema.pre('findOne', () =>{
   // this.populate('sistema');
 });
 
 PenalidadSchema.pre('find', () =>{
   // this.populate('sistema');
-});
+});*/
 
 module.exports = mongoose.model('Penalidad', PenalidadSchema);

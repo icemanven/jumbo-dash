@@ -14,6 +14,7 @@ export const BackEndConst = {
         usuarios: '/jumboApi/usuarios',
         servicios: '/jumboApi/servicios',
         penalidades: '/jumboApi/penalidades',
+        habitaciones: '/jumboApi/habitaciones',
         docs: '/jumboApi/docs'
     }
 };

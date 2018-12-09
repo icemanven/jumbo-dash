@@ -41,7 +41,7 @@ export interface Moneda {
 }
 
 export interface Servicio {
-    _id?: number;
+    _id?: string;
     nombre: string;
     descripcion: string;
     costo: number;
@@ -55,7 +55,8 @@ export interface FechasPenalidad {
 }
 
 export interface Penalidad {
-    _id: number;
+    _id?: string;
+    nombre: string;
     fechas?: FechasPenalidad[];
     cancelacionesDias: number;
     cargo: string;
@@ -65,4 +66,16 @@ export interface Penalidad {
 
 export interface Docs {
     _id: number;
+}
+
+export interface Habitacion {
+  _id?: string;
+  nombre: string;
+  descripcion: string;
+  capacidad: number;
+  adulto: number;
+  ninos: number;
+  inf: number;
+  tipoCama: string;
+  sistema?: Sistema;
 }

@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import {Habitacion, Servicio} from '@configs/interfaces';
 import {BackEndConst} from '@configs/constantes';
-import {Penalidad} from '@configs/interfaces';
 
 @Injectable()
-export class PenalidadesService implements Resolve<any>
+export class HabitacionesService implements Resolve<any>
 {
-    entidades: Penalidad[];
+    entidades: Habitacion[];
     onEntidadesChanged: BehaviorSubject<any>;
-    url = `${BackEndConst.backEndUrl}${BackEndConst.endPoints.penalidades}`;
+    url = `${BackEndConst.backEndUrl}${BackEndConst.endPoints.habitaciones}`;
 
     /**
      * Constructor
@@ -55,7 +55,7 @@ export class PenalidadesService implements Resolve<any>
     getEntidades(): Promise<any> {
         return new Promise((resolve, reject) => {
             this._httpClient.get(this.url)
-                .subscribe((response: Penalidad[]) => {
+                .subscribe((response: any[]) => {
                     this.entidades = response;
                     this.onEntidadesChanged.next(this.entidades);
                     resolve(response);

@@ -13,7 +13,7 @@
             <!-- APP TITLE -->
             <div fxLayout="row" fxLayoutAlign="start center">
 
-                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/'+entidadConst.urlEntidades">
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="entidadConst.urlEntidades">
                     <mat-icon>arrow_back</mat-icon>
                 </button>
 
@@ -78,68 +78,61 @@
                                     <input matInput
                                            name="nombre"
                                            formControlName="nombre"
-                                           placeholder="Nombre de la Penalidad"
+                                           placeholder="Nombre de habitacion"
                                            required>
                                     <mat-error *ngIf="entidadForm.get('nombre').hasError('required')">
-                                        Se requiere el nombre de la penalidad
+                                        Se requiere el nombre de la habitacion
                                     </mat-error>
-                                </mat-form-field>
-
-                                <div class="w-30-p">
-                                    <button mat-button (click)="addFecha()">Agregar Fecha</button><br><br>
-                                </div>
-                                <div class="w-70-p" formArrayName="fechas"
-                                     *ngFor="let fecha of entidadForm.get('fechas').controls; let i = index;">
-                                    <h3>Fecha {{i+1}}: </h3>
-                                    <div [formGroupName]="i">
-                                        <mat-form-field class="w-40-p">
-                                            <input matInput formControlName="fechasini" [matDatepicker]="fechasini" placeholder="Fecha inicio">
-                                            <mat-datepicker-toggle matSuffix [for]="fechasini"></mat-datepicker-toggle>
-                                            <mat-datepicker #fechasini></mat-datepicker>
-                                        </mat-form-field>
-                                        <mat-form-field class="w-40-p">
-                                            <input matInput formControlName="fechaFin" [matDatepicker]="fechaFin" placeholder="Fecha Fin">
-                                            <mat-datepicker-toggle matSuffix [for]="fechaFin"></mat-datepicker-toggle>
-                                            <mat-datepicker #fechaFin></mat-datepicker>
-                                        </mat-form-field>
-                                        <span class="w-20-p">
-                                            <button mat-button (click)="removeFecha(i)">
-                                                Borrar Fechas
-                                            </button>
-                                        </span>
-                                        <!--<input type="date" formControlName="fechasini" placeholder="Fecha Inicio">
-                                        <input type="date" formControlName="fechaFin" placeholder="Fecha Fin">
-                                        <button mat-button (click)="removeFecha(i)">
-                                            Borrar Fechas
-                                        </button>-->
-                                    </div>
-                                </div>
-
-                                <mat-form-field class="w-100-p">
-                                    <input matInput
-                                           name="cancelacionesDias"
-                                           formControlName="cancelacionesDias"
-                                           placeholder="Dias de Cancelaciones" type="number">
-                                    <!--<span matPrefix>$&nbsp;</span>-->
-                                </mat-form-field>
-
-                                <mat-form-field class="w-100-p">
-                                    <input matInput
-                                           name="cargo"
-                                           formControlName="cargo"
-                                           placeholder="Cargo de la Cancelacion"
-                                           >
                                 </mat-form-field>
 
                                 <mat-form-field class="w-100-p">
                                     <textarea matInput
                                               name="descripcion"
                                               formControlName="descripcion"
-                                              placeholder="Descripcion de la Penalizacion"
+                                              placeholder="Descripcion de la Habitacion"
                                               rows="5">
                                     </textarea>
                                 </mat-form-field>
 
+                                <mat-form-field class="w-25-p">
+                                    <input matInput
+                                           name="capacidad"
+                                           formControlName="capacidad"
+                                           placeholder="Capacidad de Habitacion" type="number">
+                                    <!--<span matPrefix>$&nbsp;</span>-->
+                                </mat-form-field>
+
+                                <mat-form-field class="w-25-p">
+                                    <input matInput
+                                           name="adulto"
+                                           formControlName="adulto"
+                                           placeholder="Cantidad de Adultos" type="number">
+                                    <!--<span matPrefix>$&nbsp;</span>-->
+                                </mat-form-field>
+
+                                <mat-form-field class="w-25-p">
+                                    <input matInput
+                                           name="ninos"
+                                           formControlName="ninos"
+                                           placeholder="Cantidad de Ninos" type="number">
+                                    <!--<span matPrefix>$&nbsp;</span>-->
+                                </mat-form-field>
+
+                                <mat-form-field class="w-25-p">
+                                    <input matInput
+                                           name="inf"
+                                           formControlName="inf"
+                                           placeholder="Cantidad de Infantes" type="number">
+                                    <!--<span matPrefix>$&nbsp;</span>-->
+                                </mat-form-field>
+
+                                <mat-form-field class="w-100-p">
+                                    <input matInput
+                                           name="tipoCama"
+                                           formControlName="tipoCama"
+                                           placeholder="Tipo de Cama"
+                                           >
+                                </mat-form-field>
 
                                 <!--<mat-form-field fxFlex="100">
                                     <mat-select placeholder="Moneda" formControlName="moneda">
@@ -148,7 +141,6 @@
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>-->
-                                <pre>{{entidadForm.value | json}}</pre>
                             </div>
 
                         </mat-tab>

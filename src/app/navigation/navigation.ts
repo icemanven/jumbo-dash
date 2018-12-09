@@ -1,5 +1,6 @@
 import { FuseNavigation } from '@fuse/types';
 import {ServicioConst} from '../main/apps/jumboMod/servicio/servicio.model';
+import {HabitacionConst} from '../main/apps/jumboMod/habitacion/habitacion.model';
 import {PenalidadConst} from '../main/apps/jumboMod/penalidad/penalidad.model';
 
 export const navigation: FuseNavigation[] = [
@@ -10,17 +11,25 @@ export const navigation: FuseNavigation[] = [
         type     : 'group',
         children : [
             {
-                'id'       : 'services',
+                'id'       : 'servicios',
                 'title'    : ServicioConst.names,
-                'translate': 'NAV.SERVICES.TITLE',
+                // 'translate': 'NAV.SERVICES.TITLE',
                 'type'     : 'item',
                 'icon'     : ServicioConst.icon,
                 'url'  : ServicioConst.urlEntidades
             },
             {
-                'id'       : 'services',
+                'id'       : 'habitaciones',
+                'title'    : HabitacionConst.names,
+                // 'translate': 'NAV.SERVICES.TITLE',
+                'type'     : 'item',
+                'icon'     : HabitacionConst.icon,
+                'url'  : HabitacionConst.urlEntidades
+            },
+            {
+                'id'       : 'penalidades',
                 'title'    : PenalidadConst.names,
-                'translate': 'NAV.SERVICES.TITLE',
+                // 'translate': 'NAV.SERVICES.TITLE',
                 'type'     : 'item',
                 'icon'     : PenalidadConst.icon,
                 'url'  : PenalidadConst.urlEntidades
