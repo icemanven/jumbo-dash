@@ -89,7 +89,7 @@
                                     <button mat-button (click)="addFecha()">Agregar Fecha</button><br><br>
                                 </div>
                                 <div class="w-70-p" formArrayName="fechas"
-                                     *ngFor="let fecha of entidadForm.get('fechas').controls; let i = index;">
+                                     *ngFor="let fecha of fechas.controls; let i = index;">
                                     <h3>Fecha {{i+1}}: </h3>
                                     <div [formGroupName]="i">
                                         <mat-form-field class="w-40-p">
@@ -148,7 +148,7 @@
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>-->
-                                <pre>{{entidadForm.value | json}}</pre>
+                               <!-- <pre>{{entidadForm.value | json}}</pre>-->
                             </div>
 
                         </mat-tab>
