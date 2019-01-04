@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router([]);
 const mongoose = require('mongoose');
-const Book = require('../models/Book.js');
+const Book = require('../models/book.js');
 const cors = require('cors');
 
 router.options('*', cors());
