@@ -24,7 +24,7 @@ const appRoute = express.static(path.join(__dirname, dir), { redirect: false });
 const dataBase = "jumboDash";
 
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb+srv://backend:JLQice13864@jumbocluster0-1mrzq.mongodb.net/${dataBase}?retryWrites=true`, // mongodb://localhost:27017/
+mongoose.connect(`mongodb://localhost:27017/${dataBase}?retryWrites=true`, // mongodb://localhost:27017/ mongodb+srv://backend:JLQice13864@jumbocluster0-1mrzq.mongodb.net/
   {useNewUrlParser: true, useCreateIndex: true,  promiseLibrary: require('bluebird') })
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
