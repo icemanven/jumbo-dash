@@ -1,4 +1,4 @@
-import {FuseConfig} from '@fuse/types';
+import { FuseConfig } from '@fuse/types';
 
 export const CrmConst = {
     sysName: 'Cotizaciones Jumbo',
@@ -21,31 +21,35 @@ export const BackEndConst = {
 
 
 export const customfuseConfig: FuseConfig = {
+    colorTheme      : 'theme-default',
+    customScrollbars: true,
     layout          : {
         style    : 'vertical-layout-1',
         width    : 'fullwidth',
         navbar   : {
-            background: 'mat-indigo-900-bg',
-            folded    : false,
-            hidden    : false,
-            position  : 'left',
-            variant   : 'vertical-style-2'
+            primaryBackground  : 'mat-indigo-700-bg',
+            secondaryBackground: 'mat-indigo-900-bg',
+            folded             : false,
+            hidden             : false,
+            position           : 'left',
+            variant            : 'vertical-style-2'
         },
         toolbar  : {
+            customBackgroundColor: false,
             background: 'mat-yellow-500-bg',
             hidden    : false,
             position  : 'below-static'
         },
         footer   : {
-            background: 'mat-fuse-dark-900-bg',
-            hidden    : true,
-            position  : 'below-fixed'
+            customBackgroundColor: true,
+            background           : 'mat-fuse-dark-900-bg',
+            hidden               : false,
+            position             : 'below-fixed'
         },
         sidepanel: {
             hidden  : false,
             position: 'right'
         }
-    },
-    customScrollbars: true
+    }
 };
 

@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <div class="px-8 px-mat-16">
+            <div class="px-8 px-md-16">
                 <fuse-shortcuts [navigation]="navigation"></fuse-shortcuts>
             </div>
 
@@ -46,7 +46,7 @@
                     <span>Inbox</span>
                 </button>
 
-                <button mat-menu-item class="" (click)="setLogOut()">
+                <button mat-menu-item class="">
                     <mat-icon>exit_to_app</mat-icon>
                     <span>Logout</span>
                 </button>
@@ -63,7 +63,7 @@
                     class="language-button"
                     [matMenuTriggerFor]="languageMenu">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <img class="flag mr-8" [src]="'assets/images/flags/'+selectedLanguage.flag+'.png'">
+                    <img class="flag mr-8" [src]="'assets/icons/flags/'+selectedLanguage.flag+'.png'">
                     <span class="iso text-uppercase">{{selectedLanguage.id}}</span>
                 </div>
             </button>
@@ -72,20 +72,35 @@
 
                 <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang)">
                     <span fxLayout="row" fxLayoutAlign="start center">
-                        <img class="flag mr-16" [src]="'assets/images/flags/'+lang.flag+'.png'">
+                        <img class="flag mr-16" [src]="'assets/icons/flags/'+lang.flag+'.png'">
                         <span class="iso">{{lang.title}}</span>
                     </span>
+                </button>
+
+                <button mat-menu-item [routerLink]="'/components/multi-language'">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <span>Learn more</span>
+                    </div>
                 </button>
 
             </mat-menu>
 
             <div class="toolbar-separator" fxHide fxShow.gt-xs></div>
 
+            <button mat-icon-button fxHide.gt-md
+                    class="chat-panel-toggle-button"
+                    (click)="toggleSidebarOpen('chatPanel')"
+                    aria-label="Toggle chat panel">
+                <mat-icon class="secondary-text">chat</mat-icon>
+            </button>
+
+            <div class="toolbar-separator" fxHide.gt-md></div>
+
             <button mat-icon-button
                     class="quick-panel-toggle-button"
                     (click)="toggleSidebarOpen('quickPanel')"
                     aria-label="Toggle quick panel">
-                <mat-icon class="icon">format_list_bulleted</mat-icon>
+                <mat-icon class="secondary-text">format_list_bulleted</mat-icon>
             </button>
 
             <div class="toolbar-separator" *ngIf="!hiddenNavbar && rightNavbar" fxHide fxShow.gt-xs></div>

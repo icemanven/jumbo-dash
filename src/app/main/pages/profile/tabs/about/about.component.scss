@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+profile-about {
 
     #about {
         max-width: 1200px;
@@ -23,11 +23,7 @@
 
                     .company {
                         padding: 0 16px 0 0;
-                        font-weight: 500;
-                    }
-
-                    .date {
-                        color: rgba(0, 0, 0, 0.54);
+                        font-weight: 600;
                     }
                 }
             }
@@ -46,6 +42,10 @@
 
                     .friend {
                         padding: 4px;
+
+                        img {
+                            border-radius: 4px;
+                        }
                     }
                 }
             }
@@ -55,29 +55,31 @@
                 .content {
 
                     .group {
-                        margin-bottom: 16px;
+                        margin-bottom: 24px;
 
                         &:last-child {
                             margin-bottom: 0;
                         }
 
                         .logo {
-                            border: 1px solid rgba(0, 0, 0, 0.12);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 48px;
+                            height: 48px;
+                            font-size: 21px;
+                            line-height: normal;
+                            border-radius: 50%;
                             margin-right: 16px;
                         }
 
                         .name {
-                            font-weight: 500;
+                            font-weight: 600;
                             font-size: 15px;
                         }
 
-                        .category,
                         .members {
-                            color: rgba(0, 0, 0, 0.54);
-                        }
-
-                        .members {
-                            margin-top: 16px;
+                            margin-top: 8px;
                         }
                     }
                 }
@@ -87,6 +89,8 @@
 
     // Profile boxes
     .profile-box {
+        border-radius: 4px;
+        overflow: hidden;
         margin-bottom: 16px;
         @include mat-elevation(2);
 
@@ -104,13 +108,11 @@
 
         .content {
             padding: 16px;
-            background-color: #FFF;
         }
 
         footer {
             padding: 8px;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            background-color: rgba(0, 0, 0, 0.06);
+            border-top: 1px solid;
         }
 
         &.info-box {
@@ -120,7 +122,7 @@
 
                 .title {
                     font-size: 15px;
-                    font-weight: 500;
+                    font-weight: 600;
                     padding-bottom: 4px;
                 }
 

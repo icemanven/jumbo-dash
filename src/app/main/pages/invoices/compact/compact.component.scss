@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+invoice-compact {
 
     #invoice {
 
@@ -9,6 +9,7 @@
 
             .invoice-container {
                 padding: 64px;
+                margin: 0 auto;
 
                 .card {
                     width: 1020px;
@@ -38,6 +39,7 @@
                                 }
 
                                 .number {
+                                    color: rgba(0, 0, 0, 0.87);
                                     padding-left: 6px;
                                 }
                             }
@@ -51,6 +53,7 @@
                                 }
 
                                 .date {
+                                    color: rgba(0, 0, 0, 0.87);
                                     padding-left: 6px;
                                 }
                             }
@@ -88,6 +91,8 @@
                                 tr {
 
                                     th {
+                                        color: rgba(0, 0, 0, 0.87);
+                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
                                         &:first-child {
                                             padding-left: 8px;
@@ -105,6 +110,8 @@
                                 tr {
 
                                     td {
+                                        color: rgba(0, 0, 0, 0.87);
+                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
                                         &:first-child {
                                             padding-left: 8px;
@@ -137,7 +144,7 @@
                                 td {
                                     text-align: right;
                                     font-size: 16px;
-                                    font-weight: 500;
+                                    font-weight: 600;
                                     color: rgba(0, 0, 0, 0.54);
                                     border-bottom: none;
                                     padding: 4px 8px;
@@ -172,7 +179,7 @@
 
                         .note {
                             font-size: 15px;
-                            font-weight: 500;
+                            font-weight: 600;
                             margin-bottom: 24px;
                         }
 
@@ -189,7 +196,7 @@
 
                         .small-note {
                             font-size: 12px;
-                            font-weight: 500;
+                            font-weight: 600;
                             color: rgba(0, 0, 0, 0.54);
                             line-height: 18px;
                         }
@@ -206,6 +213,7 @@
         #invoice {
 
             &.compact {
+                background: white;
 
                 .invoice-container {
                     padding: 0;

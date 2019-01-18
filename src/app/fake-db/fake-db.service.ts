@@ -34,7 +34,6 @@ export class FakeDbService implements InMemoryDbService
             'calendar': CalendarFakeDb.data,
 
             // E-Commerce
-            'e-commerce-dashboard': ECommerceFakeDb.dashboard,
             'e-commerce-products' : ECommerceFakeDb.products,
             'e-commerce-orders'   : ECommerceFakeDb.orders,
 
@@ -78,8 +77,7 @@ export class FakeDbService implements InMemoryDbService
             'profile-about'        : ProfileFakeDb.about,
 
             // Search
-            'search-classic': SearchFakeDb.classic,
-            'search-table'  : SearchFakeDb.table,
+            'search': SearchFakeDb.search,
 
             // FAQ
             'faq': FaqFakeDb.data,

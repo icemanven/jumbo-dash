@@ -19,12 +19,14 @@ const salesorderRouter = require('./routes/salesorder');
 const invoiceRouter = require('./routes/invoice');
 
 const app = express();
-const dir = 'dist';
+const dir = 'public';
 const appRoute = express.static(path.join(__dirname, dir), { redirect: false });
 const dataBase = "jumboDash";
+const mongoAtlas = `mongodb+srv://backend:JLQice13864@jumbocluster0-1mrzq.mongodb.net/`;
+const mongoLocal = `mongodb://localhost:27017/${dataBase}?retryWrites=true/`;
 
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb://localhost:27017/${dataBase}?retryWrites=true`, // mongodb://localhost:27017/ mongodb+srv://backend:JLQice13864@jumbocluster0-1mrzq.mongodb.net/
+mongoose.connect(mongoLocal,
   {useNewUrlParser: true, useCreateIndex: true,  promiseLibrary: require('bluebird') })
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));

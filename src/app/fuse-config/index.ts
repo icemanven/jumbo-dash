@@ -1,5 +1,5 @@
 import { FuseConfig } from '@fuse/types';
-import {customfuseConfig} from '../../@configs/constantes';
+import {customfuseConfig} from '@configs/constantes';
 
 /**
  * Default Fuse Configuration

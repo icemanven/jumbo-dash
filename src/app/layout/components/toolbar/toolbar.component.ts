@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
@@ -8,14 +8,12 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { navigation } from 'app/navigation/navigation';
-import {Router} from '@angular/router';
-import {Utilities} from '@utilities/utilities';
-import {CrmConst} from '@configs/constantes';
 
 @Component({
-    selector   : 'toolbar',
-    templateUrl: './toolbar.component.html',
-    styleUrls  : ['./toolbar.component.scss']
+    selector     : 'toolbar',
+    templateUrl  : './toolbar.component.html',
+    styleUrls    : ['./toolbar.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 
 export class ToolbarComponent implements OnInit, OnDestroy
@@ -37,13 +35,11 @@ export class ToolbarComponent implements OnInit, OnDestroy
      * @param {FuseConfigService} _fuseConfigService
      * @param {FuseSidebarService} _fuseSidebarService
      * @param {TranslateService} _translateService
-     * @param route
      */
     constructor(
         private _fuseConfigService: FuseConfigService,
         private _fuseSidebarService: FuseSidebarService,
-        private _translateService: TranslateService,
-        private route: Router
+        private _translateService: TranslateService
     )
     {
         // Set the defaults
@@ -82,9 +78,9 @@ export class ToolbarComponent implements OnInit, OnDestroy
                 flag : 'us'
             },
             {
-                id   : 'es',
-                title: 'Espanol',
-                flag : 'es'
+                id   : 'tr',
+                title: 'Turkish',
+                flag : 'tr'
             }
         ];
 
@@ -164,10 +160,4 @@ export class ToolbarComponent implements OnInit, OnDestroy
         // Use the selected language for translations
         this._translateService.use(lang.id);
     }
-
-    setLogOut(): void {
-        Utilities.logins.logOff();
-        this.route.navigate([CrmConst.loginDir]);
-    }
-
 }

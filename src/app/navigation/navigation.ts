@@ -9,30 +9,31 @@ export const navigation: FuseNavigation[] = [
         title    : 'Settings',
         translate: 'NAV.SETTINGS',
         type     : 'group',
+        icon     : 'apps',
         children : [
             {
-                'id'       : 'servicios',
-                'title'    : ServicioConst.names,
-                // 'translate': 'NAV.SERVICES.TITLE',
-                'type'     : 'item',
-                'icon'     : ServicioConst.icon,
-                'url'  : ServicioConst.urlEntidades
+                id       : 'servicios',
+                title    : ServicioConst.names,
+                // translate: 'NAV.SERVICES.TITLE',
+                type     : 'item',
+                icon     : ServicioConst.icon,
+                url  : ServicioConst.urlEntidades
             },
             {
-                'id'       : 'habitaciones',
-                'title'    : HabitacionConst.names,
+                id       : 'habitaciones',
+                title    : HabitacionConst.names,
                 // 'translate': 'NAV.SERVICES.TITLE',
-                'type'     : 'item',
-                'icon'     : HabitacionConst.icon,
-                'url'  : HabitacionConst.urlEntidades
+                type     : 'item',
+                icon     : HabitacionConst.icon,
+                url  : HabitacionConst.urlEntidades
             },
             {
-                'id'       : 'penalidades',
-                'title'    : PenalidadConst.names,
+                id       : 'penalidades',
+                title    : PenalidadConst.names,
                 // 'translate': 'NAV.SERVICES.TITLE',
-                'type'     : 'item',
-                'icon'     : PenalidadConst.icon,
-                'url'  : PenalidadConst.urlEntidades
+                type     : 'item',
+                icon     : PenalidadConst.icon,
+                url  : PenalidadConst.urlEntidades
             }
         ]
     },

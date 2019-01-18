@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+invoice-modern {
 
     #invoice {
 
@@ -9,6 +9,7 @@
 
             .invoice-container {
                 padding: 64px;
+                margin: 0 auto;
 
                 .card {
                     width: 1020px;
@@ -83,6 +84,29 @@
                         .invoice-table {
                             margin-top: 96px;
                             font-size: 15px;
+                            color: rgba(0, 0, 0, 0.87);
+
+                            thead {
+
+                                tr {
+
+                                    th {
+                                        color: rgba(0, 0, 0, 0.87);
+                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                                    }
+                                }
+                            }
+
+                            tbody {
+
+                                tr {
+
+                                    td {
+                                        color: rgba(0, 0, 0, 0.87);
+                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                                    }
+                                }
+                            }
 
                             .title {
                                 font-size: 17px;
@@ -104,7 +128,7 @@
                                 td {
                                     text-align: right;
                                     font-size: 17px;
-                                    font-weight: 500;
+                                    font-weight: 600;
                                     color: rgba(0, 0, 0, 0.54);
                                     border-bottom: none;
                                     padding: 8px 8px;
@@ -139,7 +163,7 @@
 
                         .note {
                             font-size: 15px;
-                            font-weight: 500;
+                            font-weight: 600;
                             margin-bottom: 24px;
                         }
 
@@ -156,7 +180,7 @@
 
                         .small-note {
                             font-size: 12px;
-                            font-weight: 500;
+                            font-weight: 600;
                             color: rgba(0, 0, 0, 0.54);
                             line-height: 18px;
                         }
@@ -173,6 +197,7 @@
         #invoice {
 
             &.modern {
+                background: white;
 
                 .invoice-container {
                     padding: 0;
