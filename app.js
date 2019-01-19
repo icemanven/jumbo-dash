@@ -27,7 +27,7 @@ const mongoLocal = `mongodb://localhost:27017/${dataBase}?retryWrites=true/`;
 
 
 const mongoose = require('mongoose');
-mongoose.connect(mongoAtlas,
+mongoose.connect(mongoLocal,
   {useNewUrlParser: true, useCreateIndex: true,  promiseLibrary: require('bluebird') })
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
